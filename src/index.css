@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
+
+/* ── Reset & base ───────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+/* ── Animated background themes ────────────────────────── */
+.bg-clear    { background: linear-gradient(135deg, #1a6ba0 0%, #2196f3 40%, #64b5f6 100%); }
+.bg-clouds   { background: linear-gradient(135deg, #546e7a 0%, #78909c 50%, #90a4ae 100%); }
+.bg-rain     { background: linear-gradient(135deg, #1a237e 0%, #283593 50%, #3949ab 100%); }
+.bg-drizzle  { background: linear-gradient(135deg, #37474f 0%, #455a64 50%, #546e7a 100%); }
+.bg-thunder  { background: linear-gradient(135deg, #212121 0%, #37474f 50%, #455a64 100%); }
+.bg-snow     { background: linear-gradient(135deg, #5c6bc0 0%, #7986cb 50%, #9fa8da 100%); }
+.bg-mist     { background: linear-gradient(135deg, #607d8b 0%, #78909c 50%, #90a4ae 100%); }
+.bg-default  { background: linear-gradient(135deg, #0d47a1 0%, #1976d2 50%, #42a5f5 100%); }
+
+/* ── Glassmorphism card ─────────────────────────────────── */
+.glass {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+}
+
+.glass-strong {
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 16px;
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+}
+
+/* ── Custom scrollbar ───────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); border-radius: 3px; }
+
+/* ── Animations ─────────────────────────────────────────── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes windRotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.animate-fade-in    { animation: fadeIn 0.5s ease forwards; }
+.animate-slide-left { animation: slideInLeft 0.5s ease forwards; }
+.animate-float      { animation: float 3s ease-in-out infinite; }
+
+/* Staggered children */
+.stagger-children > *:nth-child(1) { animation-delay: 0.05s; }
+.stagger-children > *:nth-child(2) { animation-delay: 0.10s; }
+.stagger-children > *:nth-child(3) { animation-delay: 0.15s; }
+.stagger-children > *:nth-child(4) { animation-delay: 0.20s; }
+.stagger-children > *:nth-child(5) { animation-delay: 0.25s; }
+
+/* Skeleton shimmer */
+.skeleton {
+  background: linear-gradient(90deg,
+    rgba(255,255,255,0.1) 25%,
+    rgba(255,255,255,0.2) 50%,
+    rgba(255,255,255,0.1) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 8px;
+}
+
+/* ── Search input override ──────────────────────────────── */
+.search-input::placeholder { color: rgba(255,255,255,0.5); }
+.search-input:focus        { outline: none; border-color: rgba(255,255,255,0.5); }
+
+/* ── AQI color bands ────────────────────────────────────── */
+.aqi-good        { color: #4caf50; }
+.aqi-moderate    { color: #ffeb3b; }
+.aqi-sensitive   { color: #ff9800; }
+.aqi-unhealthy   { color: #f44336; }
+.aqi-very        { color: #9c27b0; }
+.aqi-hazardous   { color: #7b1fa2; }
+
+/* ── Chart.js canvas fix ────────────────────────────────── */
+canvas { display: block; }
